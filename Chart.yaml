@@ -1,0 +1,12 @@
+apiVersion: v1
+appVersion: 327
+description: High performance, distributed SQL query engine for big data.
+name: presto
+version: 0.1.0
+home: https://prestosql.io
+icon: https://prestosql.io/assets/presto-og.png
+sources:
+  - https://github.com/prestosql/presto
+maintainers:
+  - name: isharamet
+    email: isharamet@gmail.com
