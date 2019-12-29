@@ -31,3 +31,11 @@ $ helm install --name my-release -f values.yaml stable/presto
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
+
+## Deploying Chart in minikube
+
+Default minikube memory and CPU settings can be insufficient, so in order to run chart locally increase CPU and memory values:
+ 
+```bash
+minikube start --cpus 6 --memory 8192
+```
