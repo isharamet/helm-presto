@@ -51,6 +51,9 @@ spec:
                 - {{ .Values.server.config.path }}/health_check.sh
             initialDelaySeconds: 5
             periodSeconds: 10
+          env:
+            - name: GET_HOSTS_FROM
+              value: dns
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

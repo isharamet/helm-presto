@@ -22,6 +22,7 @@ data:
     -XX:+ExplicitGCInvokesConcurrent
     -XX:+HeapDumpOnOutOfMemoryError
     -XX:+ExitOnOutOfMemoryError
+    -Djdk.attach.allowAttachSelf=true
 
   config.properties: |
     coordinator=true
@@ -34,15 +35,18 @@ data:
     query.max-memory={{ .Values.server.config.query.maxMemory }}
     query.max-memory-per-node={{ .Values.server.config.query.maxMemoryPerNode }}
     discovery-server.enabled=true
-    discovery.uri=http://{{ template "presto.fullname" . }}:{{ .Values.server.config.http.port }}
+    #discovery.uri=http://{{ template "presto.fullname" . }}:{{ .Values.server.config.http.port }}
+    discovery.uri=http://127.0.0.1:{{ .Values.server.config.http.port }}
+
 
   log.properties: |
     com.facebook.presto={{ .Values.server.log.presto.level }}
 
   docker-presto.sh: |
     #!/bin/bash 
-    cp {{ .Values.server.config.path }}/*.properties $PRESTO_CONF_DIR
-    cp {{ .Values.server.config.path }}/*.config $PRESTO_CONF_DIR
-    launcher run
+    mkdir /usr/lib/presto/etc
+    cp {{ .Values.server.config.path }}/*.properties /usr/lib/presto/etc/
+    cp {{ .Values.server.config.path }}/*.config /usr/lib/presto/etc
+    /usr/lib/presto/bin/launcher run
 
 ---

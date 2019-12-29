@@ -47,6 +47,9 @@ spec:
             httpGet:
               path: /v1/cluster
               port: http-coord
+          env:
+            - name: GET_HOSTS_FROM
+              value: dns
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

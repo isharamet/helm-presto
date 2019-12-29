@@ -2,7 +2,7 @@ server:
   workers: 2
   node:
     environment: production
-    dataDir: /presto/etc/data
+    dataDir: /data/presto
   log:
     presto:
       level: INFO

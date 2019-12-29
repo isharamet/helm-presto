@@ -23,6 +23,7 @@ data:
     -XX:+ExplicitGCInvokesConcurrent
     -XX:+HeapDumpOnOutOfMemoryError
     -XX:+ExitOnOutOfMemoryError
+    -Djdk.attach.allowAttachSelf=true
 
   config.properties: |
     coordinator=false
@@ -36,9 +37,10 @@ data:
 
   docker-presto.sh: |
     #!/bin/bash 
-    cp {{ .Values.server.config.path }}/*.properties $PRESTO_CONF_DIR
-    cp {{ .Values.server.config.path }}/*.config $PRESTO_CONF_DIR
-    launcher run
+    mkdir /usr/lib/presto/etc
+    cp {{ .Values.server.config.path }}/*.properties /usr/lib/presto/etc/
+    cp {{ .Values.server.config.path }}/*.config /usr/lib/presto/etc
+    /usr/lib/presto/bin/launcher run
 
   health_check.sh: |
     #!/bin/bash 
