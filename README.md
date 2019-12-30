@@ -41,4 +41,4 @@ Default minikube memory and CPU settings can be insufficient, so in order to run
 ```bash
 minikube start --cpus 6 --memory 8192
 ```
-=======
+
