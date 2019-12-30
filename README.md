@@ -1,6 +1,6 @@
 # Presto Chart
 
-[Presto](http://prestosql.io/) Presto is a high performance, distributed SQL query engine for big data.
+[Presto](http://prestosql.io/) is a high performance, distributed SQL query engine for big data.
 
 ## Chart Details
 
@@ -15,7 +15,8 @@ This chart will do the following:
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release stable/presto
+$ cd helm-presto
+$ helm install my-release .
 ```
 
 ## Configuration
@@ -27,7 +28,8 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml stable/presto
+$ cd helm-presto
+$ helm install my-release -f values.yaml .
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -39,3 +41,4 @@ Default minikube memory and CPU settings can be insufficient, so in order to run
 ```bash
 minikube start --cpus 6 --memory 8192
 ```
+=======
